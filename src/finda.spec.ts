@@ -11,7 +11,7 @@ describe('Finda', function() {
 
   beforeEach(function() {
     finda = new Finda();
-    finda.resetPackageJsonPath(path.join(__dirname, '../package.json'));
+    finda.resetPackageJsonPath(path.join(__dirname, '../spec/package.spec.json'));
   });
 
   describe('Finda class', function() {
@@ -24,7 +24,7 @@ describe('Finda', function() {
     });
 
     it('should have default value for packageJsonPath property', function() {
-      expect(finda.packageJsonPath).to.include('package.json');
+      expect(finda.packageJsonPath).to.include('package.spec.json');
     });
 
     it('should reset packageJsonPath property', function() {
@@ -33,7 +33,7 @@ describe('Finda', function() {
     });
 
     it('should reset packageJsonPath property to default', function() {
-      expect(finda.packageJsonPath).to.include('package.json');
+      expect(finda.packageJsonPath).to.include('package.spec.json');
     });
 
   });
