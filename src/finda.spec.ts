@@ -137,6 +137,24 @@ describe('Finda', function() {
 
   });
 
+  describe('getFromGitConfig function', function() {
+
+    it('should exist', function() {
+      expect(finda).to.respondTo('getFromGitConfig');
+    });
+
+    it('should find return undefined when parameter is empty', function() {
+      expect(finda.getFromGitConfig('')).to.equal(undefined);
+    });
+
+    it('should find the git user email address', function() {
+      expect(finda.getFromGitConfig('user.email')).to.be.a('string');
+      // Check again to trigger cache
+      expect(finda.getFromGitConfig('user.email')).to.be.a('string');
+    });
+
+  });
+
   describe('githubUsername function', function() {
 
     it('should exist', function() {
