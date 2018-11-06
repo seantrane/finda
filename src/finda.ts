@@ -103,7 +103,33 @@ export class Finda {
   }
 
   /**
-   * Finda git email address
+   * Find info from .git/config file
+   *
+   * @param {string} path Path to property ('user.email')
+   * @returns {string}
+   * @memberof Finda
+   */
+  getFromGitConfig(path: string): string {
+    if (!get(path, 'length')) {
+      return undefined;
+    }
+    const cacheKey = `git_config_${path}_${process.cwd()}`;
+    let str = this.cache.get(cacheKey);
+    if (str) {
+      return str;
+    }
+    // let config = gitConfigSync();
+    // if (typeof config === 'undefined') config = gitConfigSync({ path: '~/.gitconfig' });
+    // str = get(config, path);
+    if (shWhich('git')) {
+      str = shExec(`git config --get ${path}`, { silent: true }).stdout.toString().trim();
+    }
+    this.cache.set(cacheKey, str);
+    return str;
+  }
+
+  /**
+   * Find git email address
    *
    * Try to find git email address via;
    * - git config --get user.email
@@ -112,19 +138,7 @@ export class Finda {
    * @memberof Finda
    */
   gitEmail(): string {
-    const cacheKey = 'gitEmail_' + process.cwd();
-    let email = this.cache.get(cacheKey);
-    if (email) {
-      return email;
-    }
-    // let config = gitConfigSync();
-    // if (typeof config === 'undefined') config = gitConfigSync({ path: '~/.gitconfig' });
-    // email = (typeof config.user !== 'undefined') ? config.user.email : null;
-    if (shWhich('git')) {
-      email = shExec('git config --get user.email', { silent: true }).stdout.toString().trim();
-      this.cache.set(cacheKey, email);
-    }
-    return email;
+    return this.getFromGitConfig('user.email');
   }
 
   /**
@@ -174,19 +188,7 @@ export class Finda {
    * @memberof Finda
    */
   gitName(): string {
-    const cacheKey = 'gitName_' + process.cwd();
-    let name = this.cache.get(cacheKey);
-    if (name) {
-      return name;
-    }
-    // let config = gitConfigSync();
-    // if (typeof config === 'undefined') config = gitConfigSync({ path: '~/.gitconfig' });
-    // name = (typeof config.user !== 'undefined') ? config.user.name : null;
-    if (shWhich('git')) {
-      name = shExec('git config --get user.name', { silent: true }).stdout.toString().trim();
-      this.cache.set(cacheKey, name);
-    }
-    return name;
+    return this.getFromGitConfig('user.name');
   }
 
   /**
