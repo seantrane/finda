@@ -36,6 +36,19 @@ describe('Finda', function() {
       expect(finda.packageJsonPath).to.include('package.spec.json');
     });
 
+    it('should have default value for gitPath property', function() {
+      expect(finda.gitPath).to.include('.git');
+    });
+
+    it('should reset gitPath property', function() {
+      finda.resetGitPath('.missing');
+      expect(finda.gitPath).to.include('.missing');
+    });
+
+    it('should reset gitPath property to default', function() {
+      expect(finda.gitPath).to.include('.git');
+    });
+
   });
 
   describe('_getFromPackage function', function() {
