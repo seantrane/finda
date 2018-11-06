@@ -1,7 +1,7 @@
 {
   "name": "finda",
   "description": "Finda - a utility for finding the values of common attributes",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "@seantrane",
   "license": "MIT",
   "homepage": "https://github.com/seantrane/finda#readme",
@@ -22,7 +22,7 @@
     "lint": "npm run lint:md && npm run lint:ts",
     "markdownlint": "markdownlint",
     "semantic-release": "semantic-release",
-    "test": "nyc mocha --opts mocha.opts --exit"
+    "test": "nyc mocha --opts mocha.opts --timeout=7000 --exit"
   },
   "dependencies": {
     "empty-dir": "^1.0.0",
