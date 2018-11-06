@@ -1,0 +1,49 @@
+sudo: false
+language: node_js
+addons:
+  sonarcloud:
+    organization: "seantrane-github"
+node_js:
+  - '8'
+cache:
+  directories:
+    - ~/.npm
+    - node_modules
+  npm: true
+notifications:
+  email: false
+branches:
+  only:
+    - master
+    - /^greenkeeper.*$/
+before_install:
+  # package-lock.json was introduced in npm@5
+  - '[[ $(node -v) =~ ^v9.*$ ]] || npm install -g npm@latest' # skipped when using node 9
+  - npm install -g github-label-sync greenkeeper-lockfile
+install:
+  - travis_retry npm install
+stages:
+  - test
+  - name: deploy
+    if: repo = seantrane/finda
+        AND type != pull_request
+        AND branch = master
+jobs:
+  include:
+    - stage: test
+      name: 'Checks and Tests'
+      script:
+        - '[[ $TRAVIS_BRANCH =~ ^greenkeeper.*$ ]] && greenkeeper-lockfile-update || echo "Skipping greenkeeper-lockfile-update";'
+        - npm audit
+        - commitlint-travis
+        - npm run lint
+        - npm run build
+        - travis_retry github-label-sync -a "$GH_TOKEN" -l 'https://git.io/fAe5i' seantrane/finda
+        - npm test
+        - '[[ $TRAVIS_BRANCH = master ]] && sonar-scanner || echo "Skipping sonar-scanner";'
+        - '[[ $TRAVIS_BRANCH =~ ^greenkeeper.*$ ]] && greenkeeper-lockfile-upload || echo "Skipping greenkeeper-lockfile-upload";'
+    - stage: deploy
+      name: 'Publish and Release'
+      script:
+        - npm run build
+        - npm run semantic-release
