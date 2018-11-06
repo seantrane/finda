@@ -117,8 +117,8 @@
     "statements": 80,
     "watermarks": {
       "branches": [
-        75,
-        85
+        80,
+        90
       ],
       "functions": [
         80,
