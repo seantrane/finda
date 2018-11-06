@@ -101,6 +101,11 @@ describe('Yo Repo Finda', function() {
       expect(finda.authorUrl()).to.be.a('string');
     });
 
+    it('should find author url property from ~/.gitconfig', function() {
+      finda.resetPackageJsonPath('missing.json');
+      expect(finda.authorUrl()).to.be.a('string');
+    });
+
   });
 
   describe('gitEmail function', function() {

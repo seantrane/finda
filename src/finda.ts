@@ -82,18 +82,17 @@ export class Finda {
    * Try to find author URL via;
    * - require(package.json).author.url
    *
-   * @param {*} [username=this.userName()]
    * @param {string} [defaultValue]
    * @returns {string}
    * @memberof Finda
    */
-  authorUrl(username = this.username(), defaultValue?: string): string {
+  authorUrl(defaultValue?: string): string {
     const author = this._getFromPackage('author.name', this._getFromPackage('author', null));
     let url = this._getFromPackage('author.url', defaultValue);
     if (isString(author) && typeof url === 'undefined') {
       url = (author.match(/\([^\<\>]+(?=\))/g) || []).join('').substr(1);
     }
-    if (!get(url, 'length')) url = `https://github.com/${username}`;
+    if (!get(url, 'length')) url = `https://github.com/${this.githubUsername()}`;
     return url;
   }
 
