@@ -34,7 +34,7 @@ export class Finda {
   }
 
   /**
-   * Finda author email
+   * Find author email
    *
    * Try to find author email via;
    * - require(package.json).author.email
@@ -59,7 +59,7 @@ export class Finda {
   }
 
   /**
-   * Finda author name
+   * Find author name
    *
    * Try to find author name via;
    * - require(package.json).author.name
@@ -83,7 +83,7 @@ export class Finda {
   }
 
   /**
-   * Finda author URL
+   * Find author URL
    *
    * Try to find author URL via;
    * - require(package.json).author.url
@@ -128,10 +128,14 @@ export class Finda {
   }
 
   /**
-   * Finda GitHub Username
+   * Find GitHub Username
    *
    * Try to find GitHub Username via;
    * - sub-string of this.gitEmail()
+   * - require(package.json).repository.url
+   * - require(package.json).repository
+   * - require(package.json).homepage.url
+   * - require(package.json).homepage
    *
    * @returns {string}
    * @memberof Finda
@@ -144,7 +148,7 @@ export class Finda {
   }
 
   /**
-   * Finda git name
+   * Find git name
    *
    * Try to find git name via;
    * - git config --get user.name
@@ -169,7 +173,7 @@ export class Finda {
   }
 
   /**
-   * Finda package description
+   * Find package description
    *
    * Try to find package description via;
    * - require(package.json).description
@@ -203,7 +207,7 @@ export class Finda {
   }
 
   /**
-   * Finda package license
+   * Find package license
    *
    * Try to find package license via;
    * - require(package.json).license
@@ -220,7 +224,7 @@ export class Finda {
   }
 
   /**
-   * Finda package name
+   * Find package name
    *
    * Try to find package name via;
    * - require(package.json).name
@@ -240,7 +244,7 @@ export class Finda {
   }
 
   /**
-   * Finda package repository URL
+   * Find package repository URL
    *
    * Try to find package repository URL via;
    * - require(package.json).repository.url
@@ -258,7 +262,7 @@ export class Finda {
   }
 
   /**
-   * Finda package version
+   * Find package version
    *
    * Try to find package version via;
    * - require(package.json).version
@@ -274,7 +278,7 @@ export class Finda {
   }
 
   /**
-   * Finda username
+   * Find username
    *
    * Try to find username via;
    * - require(package.json).repository.url
