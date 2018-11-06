@@ -28,30 +28,6 @@ export class Finda {
   }
 
   /**
-   * Finda author name
-   *
-   * Try to find author name via;
-   * - require(package.json).author.name
-   *
-   * @param {string} [defaultValue]
-   * @returns {string}
-   * @memberof Finda
-   */
-  authorName(defaultValue?: string): string {
-    let name = this._getFromPackage('author.name', this._getFromPackage('author', defaultValue));
-    if (isString(name)) {
-      name = trimEnd((name.match(/^[^\<\(]+/g) || []).join(''));
-    }
-    if (!get(name, 'length')) {
-      name = this.gitName();
-    }
-    if (!get(name, 'length')) {
-      name = startCase(this.username());
-    }
-    return name;
-  }
-
-  /**
    * Finda author email
    *
    * Try to find author email via;
@@ -74,6 +50,30 @@ export class Finda {
       email = defaultEmail || `${userInfo().username}@${hostname()}`;
     }
     return email;
+  }
+
+  /**
+   * Finda author name
+   *
+   * Try to find author name via;
+   * - require(package.json).author.name
+   *
+   * @param {string} [defaultValue]
+   * @returns {string}
+   * @memberof Finda
+   */
+  authorName(defaultValue?: string): string {
+    let name = this._getFromPackage('author.name', this._getFromPackage('author', defaultValue));
+    if (isString(name)) {
+      name = trimEnd((name.match(/^[^\<\(]+/g) || []).join(''));
+    }
+    if (!get(name, 'length')) {
+      name = this.gitName();
+    }
+    if (!get(name, 'length')) {
+      name = startCase(this.username());
+    }
+    return name;
   }
 
   /**

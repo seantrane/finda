@@ -57,23 +57,6 @@ describe('Yo Repo Finda', function() {
 
   });
 
-  describe('authorName function', function() {
-
-    it('should exist', function() {
-      expect(finda).to.respondTo('authorName');
-    });
-
-    it('should find author.name property from package.json', function() {
-      expect(finda.authorName()).to.be.a('string');
-    });
-
-    it('should find author name property from ~/.gitconfig', function() {
-      finda.resetPackageJsonPath('missing.json');
-      expect(finda.authorName()).to.be.a('string');
-    });
-
-  });
-
   describe('authorEmail function', function() {
 
     it('should exist', function() {
@@ -87,6 +70,23 @@ describe('Yo Repo Finda', function() {
     it('should find author email property from ~/.gitconfig', function() {
       finda.resetPackageJsonPath('missing.json');
       expect(finda.authorEmail()).to.include('@');
+    });
+
+  });
+
+  describe('authorName function', function() {
+
+    it('should exist', function() {
+      expect(finda).to.respondTo('authorName');
+    });
+
+    it('should find author.name property from package.json', function() {
+      expect(finda.authorName()).to.be.a('string');
+    });
+
+    it('should find author name property from ~/.gitconfig', function() {
+      finda.resetPackageJsonPath('missing.json');
+      expect(finda.authorName()).to.be.a('string');
     });
 
   });
