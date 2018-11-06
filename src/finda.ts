@@ -39,14 +39,15 @@ export class Finda {
    */
   authorName(defaultValue?: string): string {
     let name = this._getFromPackage('author.name', this._getFromPackage('author', defaultValue));
-    if (isString(name)) name = trimEnd((name.match(/^[^\<\(]+/g) || []).join(''));
+    if (isString(name)) {
+      name = trimEnd((name.match(/^[^\<\(]+/g) || []).join(''));
+    }
     if (!get(name, 'length')) {
-      // let config = gitConfigSync();
-      // if (typeof config === 'undefined') config = gitConfigSync({ path: '~/.gitconfig' });
-      // name = (typeof config.user !== 'undefined') ? config.user.name : null;
       name = this.gitName();
     }
-    if (!get(name, 'length')) name = startCase(this.username());
+    if (!get(name, 'length')) {
+      name = startCase(this.username());
+    }
     return name;
   }
 
@@ -67,9 +68,6 @@ export class Finda {
       email = (author.match(/<[^@]+.+(?=>)/g) || []).join('').substr(1);
     }
     if (!get(email, 'length')) {
-      // let config = gitConfigSync();
-      // if (typeof config === 'undefined') config = gitConfigSync({ path: '~/.gitconfig' });
-      // email = (typeof config.user !== 'undefined') ? config.user.email : null;
       email = this.gitEmail();
     }
     if (!get(email, 'length')) {
@@ -114,6 +112,9 @@ export class Finda {
     if (email) {
       return email;
     }
+    // let config = gitConfigSync();
+    // if (typeof config === 'undefined') config = gitConfigSync({ path: '~/.gitconfig' });
+    // email = (typeof config.user !== 'undefined') ? config.user.email : null;
     if (shWhich('git')) {
       email = shExec('git config --get user.email', { silent: true }).stdout.toString().trim();
       this.cache.set(cacheKey, email);
@@ -152,6 +153,9 @@ export class Finda {
     if (name) {
       return name;
     }
+    // let config = gitConfigSync();
+    // if (typeof config === 'undefined') config = gitConfigSync({ path: '~/.gitconfig' });
+    // name = (typeof config.user !== 'undefined') ? config.user.name : null;
     if (shWhich('git')) {
       name = shExec('git config --get user.name', { silent: true }).stdout.toString().trim();
       this.cache.set(cacheKey, name);
