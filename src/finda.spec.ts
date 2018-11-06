@@ -178,11 +178,7 @@ describe('Finda', function() {
     });
 
     it('should find the GitHub username', function() {
-      if (process.env['CI']) {
-        expect(finda.githubUsername()).to.equal(undefined);
-      } else {
-        expect(finda.githubUsername()).to.be.a('string');
-      }
+      expect(finda.githubUsername()).to.equal('seantrane');
     });
 
     it('should find the GitHub username when package.json exists', function() {
