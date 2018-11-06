@@ -252,27 +252,27 @@ describe('Yo Repo Finda', function() {
       expect(finda.packageVersion('')).to.equal('');
     });
 
-    describe('username function', function() {
+  });
 
-      it('should exist', function() {
-        expect(finda).to.respondTo('username');
-      });
+  describe('username function', function() {
 
-      it('should find a username', function() {
-        expect(finda.username()).to.be.a('string');
-      });
+    it('should exist', function() {
+      expect(finda).to.respondTo('username');
+    });
 
-      it('should find something when package.json does not exist', function() {
-        finda.resetPackageJsonPath('missing.json');
-        expect(finda.username()).to.be.a('string');
-        expect(finda.username('')).to.be.a('string');
-      });
+    it('should find a username', function() {
+      expect(finda.username()).to.be.a('string');
+    });
 
-      it('should use specified username when package.json does not exist', function() {
-        finda.resetPackageJsonPath('missing.json');
-        expect(finda.username('testuser')).to.equal('testuser');
-      });
+    it('should find something when package.json does not exist', function() {
+      finda.resetPackageJsonPath('missing.json');
+      expect(finda.username()).to.be.a('string');
+      expect(finda.username('')).to.be.a('string');
+    });
 
+    it('should use specified username when package.json does not exist', function() {
+      finda.resetPackageJsonPath('missing.json');
+      expect(finda.username('testuser')).to.equal('testuser');
     });
 
   });
