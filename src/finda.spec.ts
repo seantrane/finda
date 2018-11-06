@@ -1,4 +1,5 @@
 import { assert, expect, should } from 'chai';
+import * as fs from 'fs-extra';
 import * as mocha from 'mocha';
 import * as path from 'path';
 
