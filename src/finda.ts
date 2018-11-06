@@ -144,7 +144,24 @@ export class Finda {
     if (gitEmail.indexOf('@') !== -1 && gitEmail.indexOf('github') !== -1) {
       return gitEmail.substr(0, gitEmail.indexOf('@'));
     }
-    return this.username();
+    let username = '';
+    if (existsSync(pathResolve(this.packageJsonPath))) {
+      const pkg = require(pathResolve(this.packageJsonPath));
+      username = (
+        (
+          get(pkg, 'repository.url', pkg.repository) ||
+          get(pkg, 'homepage.url', pkg.homepage) ||
+          ''
+        ).match(/github(?:\.com\/|\:)[^\/]+/g) || []
+      )
+      .join('')
+      .replace(/github\.com\//g, '')
+      .replace(/github\:/g, '');
+    }
+    if (get(username, 'length') >= 1) {
+      return username;
+    }
+    return undefined;
   }
 
   /**
@@ -293,22 +310,6 @@ export class Finda {
    * @memberof Finda
    */
   username(defaultValue = this.githubUsername()): string {
-    let username = '';
-    if (existsSync(pathResolve(this.packageJsonPath))) {
-      const pkg = require(pathResolve(this.packageJsonPath));
-      username = (
-        (
-          get(pkg, 'repository.url', pkg.repository) ||
-          get(pkg, 'homepage.url', pkg.homepage) ||
-          ''
-        ).match(/github(?:\.com\/|\:)[^\/]+/g) || []
-      )
-        .join('')
-        .substr(11);
-    }
-    if (username.length >= 1) {
-      return username;
-    }
     if (typeof defaultValue !== 'undefined' && defaultValue !== '') {
       return defaultValue;
     }
