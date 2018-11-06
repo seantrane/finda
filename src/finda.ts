@@ -208,7 +208,18 @@ export class Finda {
   }
 
   /**
-   * Finda package destination
+   * Is current directory empty, or does it have a .git directory?
+   *
+   * @param {string} gitPath Path to .git directory
+   * @returns {boolean}
+   * @memberof Finda
+   */
+  isEmptyDirOrHasGit(gitPath: string = `${this.gitPath}`): boolean {
+    return (emptyDirSync(process.cwd()) || existsSync(pathResolve(gitPath)));
+  }
+
+  /**
+   * Find package destination
    *
    * Try to find package destination (directory or path) via;
    * - resolve path via parameter
@@ -219,10 +230,7 @@ export class Finda {
    * @memberof Finda
    */
   packageDestination(directoryOrPath: string): string {
-    if (emptyDirSync(process.cwd()) || existsSync(pathResolve('.git'))) {
-      return process.cwd();
-    }
-    return pathResolve(directoryOrPath);
+    return (this.isEmptyDirOrHasGit()) ? process.cwd() : pathResolve(directoryOrPath);
   }
 
   /**
@@ -254,10 +262,8 @@ export class Finda {
    */
   packageName(defaultValue = `${this.username()}-package`): string {
     let name = this._getFromPackage('name', defaultValue);
-    if (!get(name, 'length')) {
-      if (emptyDirSync(process.cwd()) || existsSync(pathResolve('.git'))) {
-        name = (process.cwd().match(/[^\/]+$/g) || [defaultValue]).join('');
-      }
+    if (!get(name, 'length') && this.isEmptyDirOrHasGit()) {
+      name = (process.cwd().match(/[^\/]+$/g) || [defaultValue]).join('');
     }
     return name;
   }
