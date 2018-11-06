@@ -135,7 +135,7 @@ export class Finda {
     if (gitEmail.indexOf('@') !== -1 && gitEmail.indexOf('github') !== -1) {
       return gitEmail.substr(0, gitEmail.indexOf('@'));
     }
-    return undefined;
+    return this.username();
   }
 
   /**

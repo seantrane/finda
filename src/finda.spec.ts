@@ -131,8 +131,9 @@ describe('Yo Repo Finda', function() {
       }
     });
 
-    it('should find the GitHub username', function() {
-      expect(finda.githubUsername('test@domain.com')).to.be.equal(undefined);
+    it('should find the GitHub username when package.json does not exist', function() {
+      finda.resetPackageJsonPath('missing.json');
+      expect(finda.githubUsername('test@domain.com')).to.be.a('string');
     });
 
   });
