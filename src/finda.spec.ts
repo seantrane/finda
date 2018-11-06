@@ -81,12 +81,12 @@ describe('Yo Repo Finda', function() {
     });
 
     it('should finda author.email property from package.json', function() {
-      expect(finda.authorEmail()).to.include('.com');
+      expect(finda.authorEmail()).to.include('@');
     });
 
     it('should find author email property from ~/.gitconfig', function() {
       finda.resetPackageJsonPath('missing.json');
-      expect(finda.authorEmail()).to.include('.com');
+      expect(finda.authorEmail()).to.include('@');
     });
 
   });
