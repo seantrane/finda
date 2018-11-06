@@ -49,10 +49,10 @@ export class Finda {
     if (isString(author) && typeof email === 'undefined') {
       email = (author.match(/<[^@]+.+(?=>)/g) || []).join('').substr(1);
     }
-    if (!get(email, 'length')) {
+    if (get(email, 'length') < 6) {
       email = this.gitEmail();
     }
-    if (!get(email, 'length')) {
+    if (typeof email === 'undefined' || get(email, 'length') < 6) {
       email = defaultEmail || `${userInfo().username}@${hostname()}`;
     }
     return email;
@@ -73,10 +73,10 @@ export class Finda {
     if (isString(name)) {
       name = trimEnd((name.match(/^[^\<\(]+/g) || []).join(''));
     }
-    if (!get(name, 'length')) {
+    if (typeof name === 'undefined' || get(name, 'length') < 1) {
       name = this.gitName();
     }
-    if (!get(name, 'length')) {
+    if (typeof name === 'undefined' || get(name, 'length') < 1) {
       name = startCase(this.username());
     }
     return name;
