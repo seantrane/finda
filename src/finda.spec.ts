@@ -87,6 +87,11 @@ describe('Finda', function() {
       expect(finda.authorEmail()).to.include('@');
     });
 
+    it('should find author email when package.author.email property is empty', function() {
+      finda.resetPackageJsonPath(path.join(__dirname, '../spec/packageAuthorEmail.spec.json'));
+      expect(finda.authorEmail()).to.include('@');
+    });
+
   });
 
   describe('authorName function', function() {
@@ -104,6 +109,17 @@ describe('Finda', function() {
       expect(finda.authorName()).to.be.a('string');
     });
 
+    it('should find author name when package.author property is empty', function() {
+      finda.resetPackageJsonPath(path.join(__dirname, '../spec/empty.spec.json'));
+      expect(finda.authorName(undefined)).to.be.a('string');
+    });
+
+    it('should find author name when nothing is available', function() {
+      finda.resetGitPath(path.join(__dirname, '.missing'));
+      finda.resetPackageJsonPath(path.join(__dirname, '../spec/empty.spec.json'));
+      expect(finda.authorName(undefined)).to.be.a('string');
+    });
+
   });
 
   describe('authorUrl function', function() {
@@ -118,7 +134,7 @@ describe('Finda', function() {
 
     it('should find author url property from ~/.gitconfig', function() {
       finda.resetPackageJsonPath('missing.json');
-      expect(finda.authorUrl()).to.be.a('string');
+      expect(finda.authorUrl()).to.include('github.com');
     });
 
   });
