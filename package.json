@@ -1,0 +1,156 @@
+{
+  "name": "finda",
+  "description": "Finda - a utility for finding the values of common attributes",
+  "version": "1.0.0",
+  "author": "@seantrane",
+  "license": "MIT",
+  "homepage": "https://github.com/seantrane/finda#readme",
+  "repository": "github:seantrane/finda",
+  "bugs": "https://github.com/seantrane/finda/issues",
+  "main": "index.js",
+  "typings": "lib/finda.d.ts",
+  "scripts": {
+    "build:test": "npm run build && npm test",
+    "build": "npm run clean && tsc && npm run build:templates",
+    "ci": "npm run lint && npm run build:test",
+    "clean": "shx rm -rf lib",
+    "coverage": "istanbul cover node_modules/mocha/bin/_mocha -- --opts mocha.opts",
+    "docs": "typedoc --options typedoc.json --exclude '**/*.spec.ts' ./src/",
+    "git:commit": "git-cz",
+    "lint:md": "npm run markdownlint -- -i 'generators/' -i 'node_modules/' -i 'src/' -c '.markdownlint.yaml' './'",
+    "lint:ts": "tslint \"src/**/*.ts\"",
+    "lint": "npm run lint:md && npm run lint:ts",
+    "markdownlint": "markdownlint",
+    "semantic-release": "semantic-release",
+    "test": "nyc mocha --opts mocha.opts --exit"
+  },
+  "dependencies": {
+    "empty-dir": "^1.0.0",
+    "parse-git-config": "^2.0.3",
+    "shelljs": "^0.8.2",
+    "spdx-correct": "^3.0.2"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^7.0.0",
+    "@commitlint/config-conventional": "^7.0.1",
+    "@commitlint/travis-cli": "^7.0.0",
+    "@semantic-release/changelog": "^3.0.0",
+    "@semantic-release/git": "^7.0.1",
+    "@types/chai": "^4.1.4",
+    "@types/lodash": "^4.14.117",
+    "@types/mocha": "^5.2.5",
+    "@types/node": "^10.5.7",
+    "@types/parse-git-config": "^2.0.1",
+    "@types/shelljs": "^0.8.0",
+    "@types/spdx-correct": "^2.0.0",
+    "chai": "^4.1.2",
+    "commitizen": "^3.0.4",
+    "cz-conventional-changelog": "^2.1.0",
+    "husky": "^1.0.0",
+    "istanbul": "^0.4.5",
+    "markdownlint-cli": "^0.13.0",
+    "mocha": "^5.2.0",
+    "nyc": "^13.0.1",
+    "semantic-release": "^15.9.5",
+    "shx": "^0.3.2",
+    "source-map-support": "^0.5.8",
+    "ts-node": "~7.0.0",
+    "tslint": "~5.11.0",
+    "typedoc": "^0.13.0",
+    "typescript": "~2.9.2"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ],
+    "rules": {
+      "header-max-length": [
+        0,
+        "always",
+        80
+      ]
+    }
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "release": {
+    "verifyConditions": [
+      "@semantic-release/changelog",
+      "@semantic-release/npm",
+      "@semantic-release/git",
+      "@semantic-release/github"
+    ],
+    "prepare": [
+      {
+        "path": "@semantic-release/changelog",
+        "changelogTitle": "# CHANGELOG"
+      },
+      "@semantic-release/npm",
+      "@semantic-release/git"
+    ],
+    "publish": [
+      "@semantic-release/npm",
+      "@semantic-release/github"
+    ],
+    "success": [
+      "@semantic-release/github"
+    ],
+    "fail": [
+      "@semantic-release/github"
+    ]
+  },
+  "nyc": {
+    "check-coverage": true,
+    "per-file": false,
+    "branches": 80,
+    "functions": 80,
+    "lines": 80,
+    "statements": 80,
+    "watermarks": {
+      "branches": [
+        75,
+        85
+      ],
+      "functions": [
+        80,
+        90
+      ],
+      "lines": [
+        80,
+        90
+      ],
+      "statements": [
+        80,
+        90
+      ]
+    },
+    "extension": [
+      ".ts",
+      ".tsx"
+    ],
+    "exclude": [
+      "**/*.d.ts",
+      "**/*.spec.ts",
+      "**/*.test.ts",
+      "coverage",
+      "lib"
+    ],
+    "include": [
+      "src/**/*.ts"
+    ],
+    "reporter": [
+      "html",
+      "lcov",
+      "text"
+    ],
+    "all": true
+  }
+}
