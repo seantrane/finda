@@ -163,15 +163,29 @@ describe('Finda', function() {
 
     it('should find the GitHub username', function() {
       if (process.env['CI']) {
-        expect(finda.githubUsername()).to.be.equal(undefined);
+        expect(finda.githubUsername()).to.equal(undefined);
       } else {
         expect(finda.githubUsername()).to.be.a('string');
       }
     });
 
+    it('should find the GitHub username when package.json exists', function() {
+      expect(finda.githubUsername('test@domain.com')).to.equal('seantrane');
+    });
+
     it('should find the GitHub username when package.json does not exist', function() {
       finda.resetPackageJsonPath('missing.json');
-      expect(finda.githubUsername('test@domain.com')).to.be.a('string');
+      expect(finda.githubUsername('test@domain.com')).to.equal(undefined);
+    });
+
+    it('should find the GitHub username when package.homepage exists, but not package.repository', function() {
+      finda.resetPackageJsonPath(path.join(__dirname, '../spec/packageHomepage.spec.json'));
+      expect(finda.githubUsername('test@domain.com')).to.equal('seantrane');
+    });
+
+    it('should find the GitHub username when neither package.homepage nor package.repository exists', function() {
+      finda.resetPackageJsonPath(path.join(__dirname, '../spec/empty.spec.json'));
+      expect(finda.githubUsername('test@domain.com')).to.equal(undefined);
     });
 
   });
