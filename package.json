@@ -1,7 +1,7 @@
 {
   "name": "finda",
   "description": "Finda - a utility for finding the values of common attributes",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "@seantrane",
   "license": "MIT",
   "homepage": "https://github.com/seantrane/finda#readme",
