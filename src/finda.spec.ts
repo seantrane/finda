@@ -5,7 +5,7 @@ import * as path from 'path';
 
 import { Finda } from './finda';
 
-describe('Yo Repo Finda', function() {
+describe('Finda', function() {
 
   let finda: Finda;
 
@@ -17,7 +17,9 @@ describe('Yo Repo Finda', function() {
   describe('Finda class', function() {
 
     it('should have expected methods and properties', function() {
+      expect(finda).to.have.property('gitPath');
       expect(finda).to.have.property('packageJsonPath');
+      expect(finda).to.respondTo('resetGitPath');
       expect(finda).to.respondTo('resetPackageJsonPath');
     });
 

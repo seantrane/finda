@@ -16,11 +16,17 @@ import spdxCorrect = require('spdx-correct');
 export class Finda {
 
   cache: Map<string, string>;
+  gitPath: string;
   packageJsonPath: string;
 
   constructor() {
+    this.resetGitPath();
     this.resetPackageJsonPath();
     this.cache = new Map();
+  }
+
+  resetGitPath(value = '.git') {
+    this.gitPath = value;
   }
 
   resetPackageJsonPath(value = 'package.json') {
