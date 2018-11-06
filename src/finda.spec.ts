@@ -124,7 +124,11 @@ describe('Yo Repo Finda', function() {
     });
 
     it('should find the GitHub username', function() {
-      expect(finda.githubUsername()).to.be.a('string');
+      if (fs.existsSync(path.resolve('.git'))) {
+        expect(finda.githubUsername()).to.be.a('string');
+      } else {
+        expect(finda.githubUsername()).to.be.equal(undefined);
+      }
     });
 
     it('should find the GitHub username', function() {
