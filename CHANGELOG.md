@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [1.0.3](https://github.com/seantrane/finda/compare/v1.0.2...v1.0.3) (2018-11-07)
+
+
+### Bug Fixes
+
+* add unnecessary files to npm-ignore ([abf7d50](https://github.com/seantrane/finda/commit/abf7d50))
+
 ## [1.0.2](https://github.com/seantrane/finda/compare/v1.0.1...v1.0.2) (2018-11-06)
 
 
