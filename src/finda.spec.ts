@@ -245,6 +245,12 @@ describe('Finda', function() {
       expect(finda.packageDestination('./')).to.include('/');
     });
 
+    it('should find destination directory when nothing is available', function() {
+      finda.resetGitPath(path.join(__dirname, '.missing'));
+      finda.resetPackageJsonPath(path.join(__dirname, '../spec/empty.spec.json'));
+      expect(finda.packageDestination('./temp')).to.include('/temp');
+    });
+
   });
 
   describe('packageLicense function', function() {
