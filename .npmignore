@@ -11,8 +11,11 @@
 .vscode
 /docs
 /e2e
+/spec
 /src
+/test
 /tests
+CODEOWNERS
 logs
 mocha.opts
 package-lock.json
