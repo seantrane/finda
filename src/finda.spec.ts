@@ -148,6 +148,12 @@ describe('Finda', function() {
       expect(finda.authorUrl()).to.include('github.com');
     });
 
+    it('should find author url when nothing is available', function() {
+      finda.resetGitPath(path.join(__dirname, '.missing'));
+      finda.resetPackageJsonPath(path.join(__dirname, '../spec/empty.spec.json'));
+      expect(finda.authorUrl(undefined)).to.include('github.com');
+    });
+
   });
 
   describe('gitEmail function', function() {
