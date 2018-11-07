@@ -118,6 +118,17 @@ describe('Finda', function() {
       finda.resetGitPath(path.join(__dirname, '.missing'));
       finda.resetPackageJsonPath(path.join(__dirname, '../spec/empty.spec.json'));
       expect(finda.authorName(undefined)).to.be.a('string');
+      expect(finda.authorName(' ')).to.be.a('string');
+    });
+
+    it('should find author name when package.author is available', function() {
+      finda.resetPackageJsonPath(path.join(__dirname, '../spec/packageAuthor.spec.json'));
+      expect(finda.authorName()).to.equal('Barney Rubble');
+    });
+
+    it('should find author name when package.author has formatting', function() {
+      finda.resetPackageJsonPath(path.join(__dirname, '../spec/packageAuthorFormat.spec.json'));
+      expect(finda.authorName()).to.equal('Barney Rubble');
     });
 
   });
