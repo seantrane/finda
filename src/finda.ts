@@ -98,7 +98,9 @@ export class Finda {
     if (isString(author) && typeof url === 'undefined') {
       url = (author.match(/\([^\<\>]+(?=\))/g) || []).join('').substr(1);
     }
-    if (!get(url, 'length')) url = `https://github.com/${this.githubUsername()}`;
+    if (typeof url === 'undefined' || get(url, 'length') < 1) {
+      url = `https://github.com/${this.githubUsername()}`;
+    }
     return url;
   }
 
