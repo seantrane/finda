@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [1.0.4](https://github.com/seantrane/finda/compare/v1.0.3...v1.0.4) (2019-01-07)
+
+
+### Bug Fixes
+
+* **package:** update parse-git-config to version 3.0.0 ([687572b](https://github.com/seantrane/finda/commit/687572b))
+
 ## [1.0.3](https://github.com/seantrane/finda/compare/v1.0.2...v1.0.3) (2018-11-07)
 
 
