@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "empty-dir": "^2.0.0",
-    "parse-git-config": "^2.0.3",
+    "parse-git-config": "^3.0.0",
     "shelljs": "^0.8.2",
     "spdx-correct": "^3.0.2"
   },
@@ -41,7 +41,7 @@
     "@types/lodash": "^4.14.117",
     "@types/mocha": "^5.2.5",
     "@types/node": "^10.5.7",
-    "@types/parse-git-config": "^2.0.1",
+    "@types/parse-git-config": "^3.0.0",
     "@types/shelljs": "^0.8.0",
     "@types/spdx-correct": "^2.0.0",
     "chai": "^4.1.2",
@@ -57,7 +57,7 @@
     "source-map-support": "^0.5.8",
     "ts-node": "~7.0.0",
     "tslint": "~5.11.0",
-    "typedoc": "^0.13.0",
+    "typedoc": "^0.14.0",
     "typescript": "~3.1.6"
   },
   "config": {
