@@ -18,12 +18,12 @@
     "docs": "typedoc --options typedoc.json --exclude '**/*.spec.ts' ./src/",
     "git:commit": "git-cz",
     "lint:md": "npm run markdownlint -- -i 'node_modules/' -i 'src/' -c '.markdownlint.yaml' './'",
-    "lint:ts:report": "tslint -t json -o coverage/tslint-report.json \"src/**/*.ts\"",
+    "lint:ts:report": "tslint -t json -o coverage/unit-report.json \"src/**/*.ts\"",
     "lint:ts": "tslint \"src/**/*.ts\"",
     "lint": "npm run lint:md && npm run lint:ts",
     "markdownlint": "markdownlint",
     "semantic-release": "semantic-release",
-    "test": "nyc mocha --opts mocha.opts --timeout=7000 --exit"
+    "test": "nyc mocha --opts mocha.opts src/**/*.spec.ts"
   },
   "dependencies": {
     "empty-dir": "^1.0.0",
@@ -41,7 +41,7 @@
     "@types/lodash": "^4.14.117",
     "@types/mocha": "^5.2.5",
     "@types/node": "^10.5.7",
-    "@types/parse-git-config": "^2.0.1",
+    "@types/parse-git-config": "^3.0.0",
     "@types/shelljs": "^0.8.0",
     "@types/spdx-correct": "^2.0.0",
     "chai": "^4.1.2",
