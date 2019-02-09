@@ -3,7 +3,7 @@
   "description": "Finda - a utility for finding the values of common attributes",
   "version": "1.0.4",
   "author": "@seantrane",
-  "license": "MIT",
+  "license": "ISC",
   "homepage": "https://github.com/seantrane/finda#readme",
   "repository": "github:seantrane/finda",
   "bugs": "https://github.com/seantrane/finda/issues",
