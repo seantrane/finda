@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [1.0.5](https://github.com/seantrane/finda/compare/v1.0.4...v1.0.5) (2019-02-09)
+
+
+### Bug Fixes
+
+* change license from MIT to ISC ([cd42f13](https://github.com/seantrane/finda/commit/cd42f13))
+
 ## [1.0.4](https://github.com/seantrane/finda/compare/v1.0.3...v1.0.4) (2019-01-07)
 
 
