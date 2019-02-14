@@ -47,6 +47,7 @@
   "devDependencies": {
     "@commitlint/cli": "^7.5.1",
     "@commitlint/travis-cli": "^7.5.1",
+    "@seantrane/nyc-config-typescript": "^2.0.0",
     "@semantic-release/changelog": "^3.0.2",
     "@semantic-release/git": "^7.0.8",
     "@types/chai": "^4.1.4",
@@ -115,49 +116,6 @@
     ]
   },
   "nyc": {
-    "check-coverage": true,
-    "per-file": false,
-    "branches": 85,
-    "functions": 85,
-    "lines": 85,
-    "statements": 85,
-    "watermarks": {
-      "branches": [
-        80,
-        90
-      ],
-      "functions": [
-        80,
-        90
-      ],
-      "lines": [
-        80,
-        90
-      ],
-      "statements": [
-        80,
-        90
-      ]
-    },
-    "extension": [
-      ".ts",
-      ".tsx"
-    ],
-    "exclude": [
-      "**/*.d.ts",
-      "**/*.spec.ts",
-      "**/*.test.ts",
-      "coverage",
-      "lib"
-    ],
-    "include": [
-      "src/**/*.ts"
-    ],
-    "reporter": [
-      "html",
-      "lcov",
-      "text"
-    ],
-    "all": true
+    "extends": "@seantrane/nyc-config-typescript"
   }
 }
