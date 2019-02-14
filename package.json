@@ -35,7 +35,7 @@
     "lint": "npm run lint:md && npm run lint:ts",
     "prepare": "npm run build",
     "semantic-release": "semantic-release",
-    "test:mocha": "npm run clean:output && nyc mocha --opts $npm_package_directories_root/mocha.opts ./**/*.spec.ts",
+    "test:mocha": "npm run clean:output && nyc mocha --opts mocha.opts ./**/*.spec.ts",
     "test": "npm run test:mocha && npm run lint:ts:report"
   },
   "dependencies": {
@@ -50,14 +50,14 @@
     "@seantrane/nyc-config-typescript": "^2.0.0",
     "@semantic-release/changelog": "^3.0.2",
     "@semantic-release/git": "^7.0.8",
-    "@types/chai": "^4.1.4",
+    "@types/chai": "^4.1.7",
     "@types/lodash": "^4.14.117",
-    "@types/mocha": "^5.2.5",
+    "@types/mocha": "^5.2.6",
     "@types/node": "^10.5.7",
     "@types/parse-git-config": "^3.0.0",
     "@types/shelljs": "^0.8.0",
     "@types/spdx-correct": "^2.0.0",
-    "chai": "^4.1.2",
+    "chai": "^4.2.0",
     "commitizen": "^3.0.5",
     "commitlint-config-awesome": "^1.0.2",
     "cz-conventional-changelog": "^2.1.0",
@@ -69,10 +69,10 @@
     "semantic-release": "^15.13.3",
     "shx": "^0.3.2",
     "source-map-support": "^0.5.8",
-    "ts-node": "~7.0.0",
-    "tslint": "~5.11.0",
-    "typedoc": "^0.14.0",
-    "typescript": "~3.1.6"
+    "ts-node": "~8.0.2",
+    "tslint": "~5.12.1",
+    "typedoc": "^0.14.2",
+    "typescript": "~3.3.3"
   },
   "config": {
     "commitizen": {
