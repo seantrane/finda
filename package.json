@@ -65,7 +65,7 @@
     "istanbul": "^0.4.5",
     "markdownlint-cli": "^0.13.0",
     "mocha": "^5.2.0",
-    "nyc": "^13.0.1",
+    "nyc": "^13.3.0",
     "semantic-release": "^15.13.3",
     "shx": "^0.3.2",
     "source-map-support": "^0.5.8",
