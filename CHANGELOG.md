@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [1.0.6](https://github.com/seantrane/finda/compare/v1.0.5...v1.0.6) (2019-02-16)
+
+
+### Bug Fixes
+
+* update sonar badges ([954ba6e](https://github.com/seantrane/finda/commit/954ba6e))
+
 ## [1.0.5](https://github.com/seantrane/finda/compare/v1.0.4...v1.0.5) (2019-02-09)
 
 
