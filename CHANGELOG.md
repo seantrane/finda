@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [1.0.7](https://github.com/seantrane/finda/compare/v1.0.6...v1.0.7) (2019-02-28)
+
+
+### Bug Fixes
+
+* update all deps ([aa931aa](https://github.com/seantrane/finda/commit/aa931aa))
+
 ## [1.0.6](https://github.com/seantrane/finda/compare/v1.0.5...v1.0.6) (2019-02-16)
 
 
