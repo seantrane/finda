@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [1.0.8](https://github.com/seantrane/finda/compare/v1.0.7...v1.0.8) (2019-03-05)
+
+
+### Bug Fixes
+
+* add missing dependencies ([29fb4e4](https://github.com/seantrane/finda/commit/29fb4e4))
+
 ## [1.0.7](https://github.com/seantrane/finda/compare/v1.0.6...v1.0.7) (2019-02-28)
 
 
